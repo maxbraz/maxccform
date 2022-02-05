@@ -84,7 +84,14 @@ const App = () => {
   const handleFormSubmit = e => {
     e.preventDefault();
     form.submit("/post", {}, (status, data) => {
-      setResponse(JSON.stringify(data, null, 4));
+      setResponse(
+        `Your Encrypted Credit Card Details:
+        Card Number: ${data.json.card_number}
+        Expiry Date: ${data.json.card_exp}
+        CVC: ${data.json.card_cvc}
+        Cardholder Name: ${data.json.card_holder}`
+        );
+        form.reset();
     });
   };
 
